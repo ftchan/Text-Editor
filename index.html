@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">click</button>
+    <button id="save">save</button>
+    <textarea name="" id="textArea" cols="30" rows="10"></textarea>
+</body>
+    <script>
+        let newHandle = null;
+        btn.addEventListener('click', async function() {
+            [ fileHandle ] = await window.showOpenFilePicker();
+
+            const file = await fileHandle.getFile();
+            const contents = await file.text();
+
+            textArea.value = contents;
+        });
+
+        save.addEventListener('click', async function() {
+            const value = textArea.value;
+
+            if(!newHandle) {
+                newHandle = await window.showSaveFilePicker();
+            }
+
+            const writeableStream = await newHandle.createWritable();
+
+            await writeableStream.write(value);
+
+            await writeableStream.close();
+        });
+    </script>
+</html>
