@@ -1,0 +1,63 @@
+#text-editor__wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+#textEditor {
+    width: 100%;
+    height: 100%;
+
+    outline: none;
+    background: var(--bs-light);
+}
+
+#information {
+    color: var(--bs-light);
+    margin-left: 50px;
+}
+
+#text-edit__drawer {
+    width: 500px;
+    height: calc(100% - 70px);
+    overflow-x: auto;
+
+    position: absolute;
+    top: 70px;
+    right: 0;
+
+    background: #ffffff;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.text-editor__header {
+    width: 100%;
+    height: 70px;
+    background: var(--bs-blue);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title {
+    color: var(--bs-light);
+    margin-left: 20px;
+}
+
+.text-editor__textField {
+    width: 100%;
+    height: calc(100% - 70px);
+}
+
+.menu-file {
+    cursor: pointer;
+    color: var(--bs-light);
+    margin-left: 50px;
+}
+
+.menu-about {
+    cursor: pointer;
+    color: var(--bs-light);
+    margin-left: 50px;
+}
