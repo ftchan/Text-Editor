@@ -1,5 +1,3 @@
-import { handleRenderDirectories } from './render.js';
-
 let fileHandle;
 let inputOrigin = "newFile";
 
@@ -28,46 +26,6 @@ const handleCreateNewFile = () => {
     textEditor.focus();
 };
 
-// Open directory
-const handleOpenDirectory = async () => {
-    let project = {
-        name: '',
-        kind: '',
-        files: [],
-        directories: []
-    };
-
-    const dicHandle  = await window.showDirectoryPicker();
-    const { name, kind } = dicHandle;
-
-    project.name = name;
-    project.kind = kind;
-
-    if (!dicHandle) return;
-
-    const composeProject = async (files, project) => {
-        for await (const d of files.values()) {
-            const { kind, name } = d;
-
-            if (kind === 'directory') {
-                let fileObj = {
-                    name,
-                    kind,
-                    files: [],
-                    directories: []
-                };
-                project.directories.push(fileObj);
-
-                composeProject(d, fileObj)
-            } else {
-                project.files.push(d);
-            }
-        }
-    }
-
-    await composeProject(dicHandle, project);
-    handleRenderDirectories(project);
-};
 
 // Open local text file
 const handleOpenLocalFile = async () => {
@@ -144,7 +102,6 @@ const handleSaveFile = async () => {
 
 buttonNew.addEventListener("click", handleCreateNewFile);
 buttonOpen.addEventListener("click", handleOpenLocalFile);
-buttonOpenDic.addEventListener("click", handleOpenDirectory);
 
 buttonDecrease.addEventListener("click", decreaseFontSize);
 buttonIncrease.addEventListener("click", increaseFontSize);
