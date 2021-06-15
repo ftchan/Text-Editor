@@ -6,5 +6,5 @@ An usual text editor can read、save in browser.but it can't write to its conten
 
 If user permit brower have permission to operation local files,We can do more things.Such as web online coding and so on.
 
-# How to review it
+# How to preview it
 Please click: https://ftchan.github.io/Text-Editor/ to visit
